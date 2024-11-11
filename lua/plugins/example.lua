@@ -56,13 +56,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
-    opts = function(_, opts)
-      local servers = { "pyright", "basedpyright", "ruff", "ruff_lsp" }
-      for _, server in ipairs(servers) do
-        opts.servers[server] = opts.servers[server] or {}
-        opts.servers[server].enabled = true
-      end
-    end,
     entry_filter = function(entry)
       return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
     end,
